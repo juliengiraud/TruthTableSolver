@@ -1,0 +1,7 @@
+<Truth Table Solver 1.2 Beta> is a program that solves the truth table and output all possible  minimized equations.
+
+It uses Quine McCluskey algorithm.
+
+This version is written in java so you need "java" to run this program.
+
+report any bug to <eng_sherif_ahmed@live.com>.

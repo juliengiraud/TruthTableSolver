@@ -1,0 +1,30 @@
+<Truth Table Solver 1.2 Beta>
+
+-the product of sums result error was solved
+
+-------------------------------------------------------
+<Truth Table Solver 1.1 Beta>
+
+-changes in the code which made the program much faster.
+
+-the number of terms limit changed from 8 to 16.
+
+-the "all possible solutions" and "one solution" options.
+
+-the program will not freeze after pressing the solve button till the answer is computed.
+
+-better error handling.
+
+-adding colors to the gui components and to the solution.
+
+-adding a progress bar to the gui.
+
+-some other bugs in the previous version fixed.  
+
+-------------------------------------------------------
+<Truth Table Solver 1.0 Beta>
+
+-the program rewrittin in java.
+
+-adding a gui.
+

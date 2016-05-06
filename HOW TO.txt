@@ -1,0 +1,140 @@
+		                                             
+HOW TO USE <TRUTH TABLE SOLVER 1.2 Beta>  
+########################################
+
+
+
+I- SYSTEM REQUIREMENTS
+
+	-you has to have "java" installed to run this program.
+
+	-this program will run in any operation system(windows/linux/mac/others) that has java installed on it.
+
+-----------------------------------------------------------------------------------
+
+II- USING THE GUI MODE
+
+	-run the program in the gui mode by double clicking at the "TruthTableSolver.jar" file or by typing the command "java -jar path/TruthTableSolver.jar" in the command prompt/terminal(path is the path of the file "TruthTableSolver.jar" in).
+
+	-to input your function press the buttons under the "FUNCTION" column.
+
+	-change the default terms names in the "Terms Names" table.
+
+	-chose between "Sum of products" or "Product of sums" options from the radio buttons.
+	
+	-chose between "All possible solutions" and "One solution" options from the radio buttons.
+
+	-to clear all the values press "clear value" button.
+
+	-to generate the answer press "solve".
+
+	-in case of dont cares in the function there may be many possible solutions the "all possible solutions" option will give you all the possible solutions that are equaly minized
+	 but when there is many possiblities it may take the program a long time to compute all the possibilities or even fail to compute it
+	 so if you need all the possible solutions you have to wait
+	 but if you only need one solution choose "one solution" option because it's faster.
+
+	-in case of many solutions each solution will be separated by the previous solution by "empty line" then "OR" then "empty line".
+
+	-notice that essential terms are colored in blue and none essential terms are colored in green.
+
+	-if you need more that 16 terms use the command line mode.
+
+-----------------------------------------------------------------------------------
+
+III- USING THE COMMAND LINE MODE
+
+	-run the program in the command line mode by typing the command "java -jar path/TruthTableSolver.jar -nw" in the command prompt/terminal(path is the path of the file "TruthTableSolver.jar" in).
+
+	-in case of many solutions each solution will be separated by the previous solution by "empty line" then "OR" then "empty line".
+
+
+examble of using command line mode : 
+
+a  b  c  d   |f
+----------------
+0  0  0  0   |0
+0  0  0  1   |0
+0  0  1  0   |1
+0  0  1  1   |0
+0  1  0  0   |1
+0  1  0  1   |0
+0  1  1  0   |1
+0  1  1  1   |1
+1  0  0  0   |0
+1  0  0  1   |don't care
+1  0  1  0   |0
+1  0  1  1   |1
+1  1  0  0   |don't care
+1  1  0  1   |1
+1  1  1  0   |0
+1  1  1  1   |0
+
+
+
+
+*********************************************************
+*      ###   #   # #  ###  # #    ###   #   ##   #   ## *
+*       #   # #  # #   #   # #     #   # #  # #  #   #  *
+*       #   ##   # #   #   ###     #   ###  ##   #   ## *
+*       #   # #  # #   #   # #     #   # #  # #  #   #  *
+*       #   # #  ###   #   # #     #   # #  ##   ##  ## *
+*                                                       *
+*                                                       *
+*         ##  ###  #   # #  ##   #                      *
+*         #   # #  #   # #  #   # #                     *
+*         ##  # #  #   # #  ##  ##    1.2 Beta          *
+*          #  # #  #   # #  #   # #                     *
+*         ##  ###  ##   #   ##  # #   By : Sherif Ahmed *
+*********************************************************
+
+This program solves the truth table and output all the possible minimized
+equations.
+
+enter the number of terms : 4
+
+enter name of term[1] : a
+enter name of term[2] : b
+enter name of term[3] : c
+enter name of term[4] : d
+
+enter the value[0] : 0
+enter the value[1] : 0
+enter the value[2] : 1
+enter the value[3] : 0
+enter the value[4] : 1
+enter the value[5] : 0
+enter the value[6] : 1
+enter the value[7] : 1
+enter the value[8] : 0
+enter the value[9] : d
+enter the value[10] : 0
+enter the value[11] : 1
+enter the value[12] : d
+enter the value[13] : 1
+enter the value[14] : 0
+enter the value[15] : 0
+
+enter 1 for sum of products or 2 for product of sums : 1
+
+enter 1 for (all possible solutions[occasionaly slow]) or
+2 (one solution only[fast]): 1
+
+
+THE RESULT :
+
+( a'. c . d') + ( a'. b . c ) + ( a . b'. d ) + ( a'. b . d') + ( a . c'. d )
+
+OR
+
+( a'. c . d') + ( a'. b . c ) + ( a . b'. d ) + ( b . c'. d') + ( a . c'. d )
+
+OR
+
+( a'. c . d') + ( a'. b . c ) + ( a . b'. d ) + ( a'. b . d') + ( a . b . c')
+
+OR
+
+( a'. c . d') + ( a'. b . c ) + ( a . b'. d ) + ( b . c'. d') + ( a . b . c')
+
+
+-------------------------------------------------------------------------------
