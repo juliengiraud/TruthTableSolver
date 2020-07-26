@@ -8,56 +8,56 @@ report any bug to <sherif.ahmed990@gmail.com>.
 
 ------------------------------------------------------
 
-HOW TO USE <TRUTH TABLE SOLVER 1.2 Beta>  
+HOW TO USE <TRUTH TABLE SOLVER 1.2 Beta>
 ########################################
 
 
 
 I- SYSTEM REQUIREMENTS
 
-	-you has to have "java" installed to run this program.
+    -you has to have "java" installed to run this program.
 
-	-this program will run in any operation system(windows/linux/mac/others) that has JVM installed on it.
+    -this program will run in any operation system(windows/linux/mac/others) that has JVM installed on it.
 
 -----------------------------------------------------------------------------------
 
 II- USING THE GUI MODE
 
-	-run the program in the gui mode by double clicking at the "TruthTableSolver.jar" file or by typing the command "java -jar path/TruthTableSolver.jar" in the command prompt/terminal(path is the path of the file "TruthTableSolver.jar" in).
+    -run the program in the gui mode by double clicking at the "TruthTableSolver.jar" file or by typing the command "java -jar path/TruthTableSolver.jar" in the command prompt/terminal(path is the path of the file "TruthTableSolver.jar" in).
 
-	-to input your function press the buttons under the "FUNCTION" column.
+    -to input your function press the buttons under the "FUNCTION" column.
 
-	-change the default terms names in the "Terms Names" table.
+    -change the default terms names in the "Terms Names" table.
 
-	-chose between "Sum of products" or "Product of sums" options from the radio buttons.
-	
-	-chose between "All possible solutions" and "One solution" options from the radio buttons.
+    -chose between "Sum of products" or "Product of sums" options from the radio buttons.
 
-	-to clear all the values press "clear value" button.
+    -chose between "All possible solutions" and "One solution" options from the radio buttons.
 
-	-to generate the answer press "solve".
+    -to clear all the values press "clear value" button.
 
-	-in case of dont cares in the function there may be many possible solutions the "all possible solutions" option will give you all the possible solutions that are equaly minized
-	 but when there is many possiblities it may take the program a long time to compute all the possibilities or even fail to compute it
-	 so if you need all the possible solutions you have to wait
-	 but if you only need one solution choose "one solution" option because it's faster.
+    -to generate the answer press "solve".
 
-	-in case of many solutions each solution will be separated by the previous solution by "empty line" then "OR" then "empty line".
+    -in case of dont cares in the function there may be many possible solutions the "all possible solutions" option will give you all the possible solutions that are equaly minized
+     but when there is many possiblities it may take the program a long time to compute all the possibilities or even fail to compute it
+     so if you need all the possible solutions you have to wait
+     but if you only need one solution choose "one solution" option because it's faster.
 
-	-notice that essential terms are colored in blue and none essential terms are colored in green.
+    -in case of many solutions each solution will be separated by the previous solution by "empty line" then "OR" then "empty line".
 
-	-if you need more that 16 terms use the command line mode.
+    -notice that essential terms are colored in blue and none essential terms are colored in green.
+
+    -if you need more that 16 terms use the command line mode.
 
 -----------------------------------------------------------------------------------
 
 III- USING THE COMMAND LINE MODE
 
-	-run the program in the command line mode by typing the command "java -jar path/TruthTableSolver.jar -nw" in the command prompt/terminal(path is the path of the file "TruthTableSolver.jar" in).
+    -run the program in the command line mode by typing the command "java -jar path/TruthTableSolver.jar -nw" in the command prompt/terminal(path is the path of the file "TruthTableSolver.jar" in).
 
-	-in case of many solutions each solution will be separated by the previous solution by "empty line" then "OR" then "empty line".
+    -in case of many solutions each solution will be separated by the previous solution by "empty line" then "OR" then "empty line".
 
 
-examble of using command line mode : 
+examble of using command line mode :
 
 a  b  c  d   |f
 ----------------

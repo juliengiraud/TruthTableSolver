@@ -1,4 +1,4 @@
-/*    
+/*
  *<Truth Table Solver 1.2 Beta>
  *Copyright (C) <2011>  <Sherif Ahmed>
  *
@@ -29,106 +29,106 @@ import java.util.Vector;
 
 public class Tlist{
     private int size;    //list size
-    
+
     private Node head;   //list head node
-    
+
     private Node tail;   //list tail node
-    
+
     Tlist(){
         size = 0;
-	
+
         head = null;
-	
+
         tail = null;
     }
-    
+
     /*
      *add node to the list
      */
-    
+
     void addNode(int value, int sub, boolean mark){
-		Node temp = new Node();
-		
-		if(size == 0)
-			head = tail = temp;
-		
-		else{
-			tail.setNext(temp);
-			
-			tail=temp;
-		}
-		size++;
-		
-		temp.setValue(value);
-		
-		temp.setSub(sub);
-		
-		temp.setMark(mark);
+        Node temp = new Node();
+
+        if(size == 0)
+            head = tail = temp;
+
+        else{
+            tail.setNext(temp);
+
+            tail=temp;
+        }
+        size++;
+
+        temp.setValue(value);
+
+        temp.setSub(sub);
+
+        temp.setMark(mark);
     }
-    
+
     /*
      *add node to the list
      */
-    
+
     void addNode(int value){
-		addNode(value, 0, false);
+        addNode(value, 0, false);
     }
-    
+
     /*
      * get list size
      */
-    
+
     int getSize(){
-		return size;
+        return size;
     }
-    
+
     /*
      * get list head
      */
-    
+
     Node getHead(){
-		return head;
+        return head;
     }
-    
+
     /*
      * get list tail
      */
-    
+
     Node getTail(){
-		return tail;
+        return tail;
     }
-    
+
     /*
      * get all the value fields in each node of the list in avector
      */
-    
+
     public Vector<Integer> getValues(){
-		Vector<Integer> values = new Vector<Integer>();
-		
-		Node temp = head;
-		
-		while(temp != null){
-			values.add(temp.getValue());
-			
-			temp = temp.getNext();
-		}
-		return values;
+        Vector<Integer> values = new Vector<Integer>();
+
+        Node temp = head;
+
+        while(temp != null){
+            values.add(temp.getValue());
+
+            temp = temp.getNext();
+        }
+        return values;
     }
-    
+
     /*
      * get all the sub fields in each node of the list in avector
      */
-    
+
     public Vector<Integer> getSubs(){
-		Vector<Integer> subs = new Vector<Integer>();
-		
-		Node temp = head;
-		
-		while(temp != null){
-			subs.add(temp.getSub());
-			
-			temp = temp.getNext();
-		}
-		return subs;
+        Vector<Integer> subs = new Vector<Integer>();
+
+        Node temp = head;
+
+        while(temp != null){
+            subs.add(temp.getSub());
+
+            temp = temp.getNext();
+        }
+        return subs;
     }
 }

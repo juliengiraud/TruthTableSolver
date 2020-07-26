@@ -1,4 +1,4 @@
-/*    
+/*
  *<Truth Table Solver 1.2 Beta>
  *Copyright (C) <2011>  <Sherif Ahmed>
  *
@@ -33,25 +33,25 @@ import javax.swing.UIManager;
 import javax.swing.table.JTableHeader;
 
 public class RowHeaderRenderer extends JLabel implements ListCellRenderer {
-    
+
     RowHeaderRenderer(JTable table) {
-		JTableHeader header = table.getTableHeader();
-		setOpaque(true);
-		setBorder(UIManager.getBorder("TableHeader.cellBorder"));
-		setHorizontalAlignment(CENTER);
-		setForeground(header.getForeground());
-		setBackground(header.getBackground());
-		setFont(header.getFont());
+        JTableHeader header = table.getTableHeader();
+        setOpaque(true);
+        setBorder(UIManager.getBorder("TableHeader.cellBorder"));
+        setHorizontalAlignment(CENTER);
+        setForeground(header.getForeground());
+        setBackground(header.getBackground());
+        setFont(header.getFont());
     }
-    
+
     public Component getListCellRendererComponent(
                            JList list,
-						   Object value, 
-						   int index, 
-						   boolean isSelected, 
-						   boolean cellHasFocus
-						   ){
-		setText((value == null) ? "" : value.toString());
-		return this;
+                           Object value,
+                           int index,
+                           boolean isSelected,
+                           boolean cellHasFocus
+                           ){
+        setText((value == null) ? "" : value.toString());
+        return this;
     }
 }

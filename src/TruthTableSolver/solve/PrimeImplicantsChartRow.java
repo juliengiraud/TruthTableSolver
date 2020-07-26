@@ -1,4 +1,4 @@
-/*    
+/*
  *<Truth Table Solver 1.2 Beta>
  *Copyright (C) <2011>  <Sherif Ahmed>
  *
@@ -25,54 +25,54 @@ package TruthTableSolver.solve;
 
 public class PrimeImplicantsChartRow{
     private int [] row; //prime implicants row values
-    
+
     private int row_index;//prime implicants row index
-    
+
     private int row_length; //prime implicant row length
-    
+
     PrimeImplicantsChartRow(){
-		row_index = -1;
-	
-		row_length = 0;
+        row_index = -1;
+
+        row_length = 0;
     }
-    
+
     void setRow(int [] x_row, int index){
-		row = x_row;
-	
-		row_index = index;
-	
-		row_length = row.length;
+        row = x_row;
+
+        row_index = index;
+
+        row_length = row.length;
     }
-    
+
     void setRow(int [] x_row){
-		row = x_row;
-	
-		row_length = row.length;
+        row = x_row;
+
+        row_length = row.length;
     }
-    
+
     int [] getRow(){
-		return row;
+        return row;
     }
-    
+
     int getCell(int cell_number){
-		return row[cell_number];
+        return row[cell_number];
     }
-    
+
     int getRowIndex(){
-		return row_index;
+        return row_index;
     }
-    
+
     int getRowLength(){
-		return row_length;
+        return row_length;
     }
-    
+
     int getNumberOfOnesInRow(){
-		int count = 0;
-	
-		for(int i = 0; i < row_length; i++)
-			if(row[i] == 1)
-				count++;
-	
-		return count;
+        int count = 0;
+
+        for(int i = 0; i < row_length; i++)
+            if(row[i] == 1)
+                count++;
+
+        return count;
     }
 }

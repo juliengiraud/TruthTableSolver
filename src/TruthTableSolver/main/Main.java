@@ -32,44 +32,44 @@ import TruthTableSolver.gui.*;
 
 public class Main{
     public static void main(String args []) throws Exception {
-		if(args.length != 0){
-			if(args[0].equalsIgnoreCase("-nw")){
-				Prompt in = new Prompt();
-						
-				String answer;
-				
-				in.promptUser();
+        if(args.length != 0){
+            if(args[0].equalsIgnoreCase("-nw")){
+                Prompt in = new Prompt();
 
-				Solver sol = new Solver(
-							in.getValues(),
-							in.getTermsNames(),
-							in.getSumOfProductsOrProductOfSums(),
-							in.getOneAllPossibleSolutionsOrOneSolution()
-							);
-				
-				sol.Solve();
+                String answer;
 
-				System.out.println();
-				
-				answer = sol.getSolution();
-				
-				answer = answer.replaceAll("\\<.*?>", "");	//remove html tags
-				
-				System.out.println("\nTHE RESULT :\n\n" + answer);
-			}
-			else{
-				System.out.println("\n" +args[0]+ " : INVALIED PARAMETER, PROGRAM WILL EXIT.");
-			
-				System.exit(0);
-			}
-		}
-		
-		else{
-			Gui g=new Gui();
-		
-			g.createGui();
-		
-			g.validate();
-		}
-	}
+                in.promptUser();
+
+                Solver sol = new Solver(
+                            in.getValues(),
+                            in.getTermsNames(),
+                            in.getSumOfProductsOrProductOfSums(),
+                            in.getOneAllPossibleSolutionsOrOneSolution()
+                            );
+
+                sol.Solve();
+
+                System.out.println();
+
+                answer = sol.getSolution();
+
+                answer = answer.replaceAll("\\<.*?>", "");    //remove html tags
+
+                System.out.println("\nTHE RESULT :\n\n" + answer);
+            }
+            else{
+                System.out.println("\n" +args[0]+ " : INVALIED PARAMETER, PROGRAM WILL EXIT.");
+
+                System.exit(0);
+            }
+        }
+
+        else{
+            Gui g=new Gui();
+
+            g.createGui();
+
+            g.validate();
+        }
+    }
 }

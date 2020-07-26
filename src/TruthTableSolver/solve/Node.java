@@ -1,4 +1,4 @@
-/*    
+/*
  *<Truth Table Solver 1.2 Beta>
  *Copyright (C) <2011>  <Sherif Ahmed>
  *
@@ -65,52 +65,52 @@ package TruthTableSolver.solve;
 
 class Node{
     private int value;
-    
+
     private int sub;
-    
+
     private Node next;
-    
+
     private boolean mark;
-    
-    Node(){	
-		value = -1;
-	
-		sub = 0;
-	
-		next = null;
-	
-		mark = false;
-    }    
-    
+
+    Node(){
+        value = -1;
+
+        sub = 0;
+
+        next = null;
+
+        mark = false;
+    }
+
     void setValue(int v){
-		value = v;
+        value = v;
     }
-    
+
     void setSub(int s){
-		sub = s;
+        sub = s;
     }
-    
+
     void setNext(Node n){
-		next = n;
-    }    
-    
+        next = n;
+    }
+
     void setMark(boolean m){
-		mark = m;
+        mark = m;
     }
-    
+
     int getValue(){
-		return value;
+        return value;
     }
-    
+
     int getSub(){
-		return sub;
+        return sub;
     }
-    
+
     Node getNext(){
-		return next;
+        return next;
     }
-    
+
     boolean getMark(){
-		return mark;
+        return mark;
     }
 }
