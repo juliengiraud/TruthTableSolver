@@ -30,46 +30,46 @@ import TruthTableSolver.cmdIn.*;
 
 import TruthTableSolver.gui.*;
 
-public class Main{
-    public static void main(String args []) throws Exception {
-        if(args.length != 0){
-            if(args[0].equalsIgnoreCase("-nw")){
-                Prompt in = new Prompt();
-
-                String answer;
-
-                in.promptUser();
-
-                Solver sol = new Solver(
-                            in.getValues(),
-                            in.getTermsNames(),
-                            in.getSumOfProductsOrProductOfSums(),
-                            in.getOneAllPossibleSolutionsOrOneSolution()
-                            );
-
-                sol.Solve();
-
-                System.out.println();
-
-                answer = sol.getSolution();
-
-                answer = answer.replaceAll("\\<.*?>", "");    //remove html tags
-
-                System.out.println("\nTHE RESULT :\n\n" + answer);
-            }
-            else{
-                System.out.println("\n" +args[0]+ " : INVALIED PARAMETER, PROGRAM WILL EXIT.");
-
-                System.exit(0);
-            }
-        }
-
-        else{
-            Gui g=new Gui();
-
+public class Main {
+    public static void main(String[] args) throws Exception {
+        if (args.length == 0) {
+            Gui g = new Gui();
             g.createGui();
-
             g.validate();
+        } else if (args.length == 1 && args[0].equals("-nw")) {
+            ManualPrompt in = new ManualPrompt();
+            in.promptUser();
+            Solver sol = new Solver(
+                    in.getValues(),
+                    in.getTermsNames(),
+                    in.getSumOfProductsOrProductOfSums(),
+                    in.getOneAllPossibleSolutionsOrOneSolution()
+            );
+            sol.Solve();
+            System.out.println();
+            String answer = sol.getSolution();
+            answer = answer.replaceAll("\\<.*?>", ""); // remove html tags
+            System.out.println("\nTHE RESULT :\n\n" + answer);
+        } else if (args.length == 2 && args[0].equals("-nw") && args[1].equals("-f")) {
+            System.out.println("Open file");
+            AutomaticPrompt ins = new AutomaticPrompt();
+            ins.promptUser();
+            for (int i = 0; i < ins.getValues().size(); i++) {
+                Solver sol = new Solver(
+                        ins.getValues().get(i),
+                        ins.getTermsNames(),
+                        ins.getSumOfProductsOrProductOfSums(),
+                        ins.getOneAllPossibleSolutionsOrOneSolution()
+                );
+                sol.Solve();
+                System.out.println();
+                String answer = sol.getSolution();
+                answer = answer.replaceAll("\\<.*?>", ""); // remove html tags
+                System.out.println("\nTHE RESULT FOR " + ins.getOutputTermsNames()[i] + ":\n\n" + answer);
+            }
+        } else {
+            System.out.println("\n" + args[0] + " : INVALIED PARAMETER, PROGRAM WILL EXIT.");
+            System.exit(0);
         }
     }
 }

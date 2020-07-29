@@ -105,6 +105,15 @@ public class Gui extends JFrame{
         JMenu file = new JMenu("File");
         file.setMnemonic(KeyEvent.VK_F);
 
+        JMenuItem fileOpen = new JMenuItem("Open");
+        fileOpen.setMnemonic(KeyEvent.VK_O);
+        fileOpen.setToolTipText("Open truth table file");
+        fileOpen.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                System.out.println("Open file");
+            }
+        });
+
         JMenuItem fileClose = new JMenuItem("Close");
         fileClose.setMnemonic(KeyEvent.VK_C);
         fileClose.setToolTipText("Exit application");
@@ -114,6 +123,7 @@ public class Gui extends JFrame{
             }
         });
 
+        file.add(fileOpen);
         file.add(fileClose);
 
         JMenu Help = new JMenu("Help");
