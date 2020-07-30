@@ -88,15 +88,15 @@ public class ButtonEditor extends DefaultCellEditor
         if (isPushed)  {
             if(label.equalsIgnoreCase("<html><font color=green>0</font></html>")){
                 label="<html><font color=red>1</font></html>";
-                Gui.values.set(clicked_button_number,1);
+                Gui.getValues().set(clicked_button_number,1);
             }
             else if(label.equalsIgnoreCase("<html><font color=red>1</font></html>")){
                 label="<html><font color=blue>d</font></html>";
-                Gui.values.set(clicked_button_number,2);
+                Gui.getValues().set(clicked_button_number,2);
             }
             else if(label.equalsIgnoreCase("<html><font color=blue>d</font></html>")){
                 label="<html><font color=green>0</font></html>";
-                Gui.values.set(clicked_button_number,0);
+                Gui.getValues().set(clicked_button_number,0);
             }
         }
         isPushed = false;
