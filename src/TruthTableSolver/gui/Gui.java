@@ -31,10 +31,10 @@ import javax.swing.event.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.event.ChangeEvent;
 
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
-
-import java.io.IOException;
 
 import TruthTableSolver.solve.*;
 
@@ -44,9 +44,12 @@ public class Gui extends JFrame {
     private static int sum_of_products_or_product_of_sums;
     private static int one_sol_or_all_possible;
     private static File file;
+    private static List<String> fileContent;
+    private static List<int[]> fileValues;
 
     private static Vector<Integer> values;
     private static String[] terms_names;
+    private static String[] output_terms_names;
     private static String[] default_terms_names = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P".split(",");
 
     private static JEditorPane editor_pane = new JEditorPane();
@@ -452,7 +455,11 @@ public class Gui extends JFrame {
             public void mouseClicked(MouseEvent e) {
 
                 if (Gui.file != null) {
-                    Gui.solveFile();
+                    try {
+                        Gui.solveFile();
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
                     return;
                 }
 
@@ -720,54 +727,65 @@ public class Gui extends JFrame {
         return temp;
     }
 
-    public static void solveFile() {
-        int[] fvalues = new int[(int) Math.pow(2, number_of_terms)];
-        String[] fterms_names = new String[number_of_terms];
+    private static List<String> getFileContent() throws Exception {
+        List<String> content = new ArrayList<>();
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        Solver sol = new Solver(fvalues, fterms_names, sum_of_products_or_product_of_sums,
-                one_sol_or_all_possible);
-
-        if (t.isAlive()) {
-            t.interrupt();
-
-            try {
-                t.join();
-            } catch (InterruptedException ex) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            if (line.length() > 0) {
+                content.add(line);
             }
-            t = null;
         }
-        t = new Thread(sol);
 
-        System.arraycopy(terms_names, 0, fterms_names, 0, number_of_terms);
+        return content;
+    }
 
-        for (int i = 0; i < (int) Math.pow(2, number_of_terms); i++)
-            fvalues[i] = values.get(i).intValue();
+    private static String[] getTermsNames() {
+        String header = fileContent.get(0);
+        String inputsHeader = header.split(",")[0];
+        return inputsHeader.split(" ");
+    }
 
-        try {
-            t.start();
-            t.setPriority(9);
-            Thread.currentThread().setPriority(1);
-        } catch (java.lang.OutOfMemoryError ex1) {
-            JPanel panel = new JPanel();
-            panel = new JPanel();
-            panel.setLayout(new GridLayout(2, 2));
+    private static String[] getOutputTermsNames() {
+        String header = fileContent.get(0);
+        String outputsHeader = header.split(", ")[1];
+        return outputsHeader.split(" ");
+    }
 
-            JOptionPane.showMessageDialog(panel, "    " + ex1.getMessage() + " ERROR"
-                    + ((one_sol_or_all_possible == 0) ? "\n   you should use the \"one solution\" option" : ""),
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-        } catch (java.lang.Error ex2) {
-            JPanel panel = new JPanel();
-            panel = new JPanel();
-            panel.setLayout(new GridLayout(2, 2));
+    private static List<int[]> getFileValues() {
+        List<int[]> tab = new ArrayList<>();
+        for (int i = 0; i < output_terms_names.length; i++) {
+            int[] column = new int[(int)Math.pow(2, number_of_terms)];
+            for (int j = 1; j < fileContent.size(); j++) {
+                String outputs = fileContent.get(j).split(" ")[1];
+                column[j - 1] = Integer.parseInt(outputs.substring(i, i+1));
+            }
+            tab.add(column);
+        }
+        return tab;
+    }
 
-            JOptionPane.showMessageDialog(panel, "    " + ex2.getMessage() + " ERROR ", "ERROR",
-                    JOptionPane.ERROR_MESSAGE);
-        } finally {
-            Gui.setStatusBar("Done");
+    public static void solveFile() throws Exception {
+        fileContent = getFileContent();
+        terms_names = getTermsNames();
+        number_of_terms = terms_names.length;
+        output_terms_names = getOutputTermsNames();
+        fileValues = getFileValues();
 
-            Gui.setProgressBar(false);
-
-            sol = null;
+        for (int i = 0; i < fileValues.size(); i++) {
+            Solver sol = new Solver(
+                    fileValues.get(i),
+                    terms_names,
+                    sum_of_products_or_product_of_sums,
+                    one_sol_or_all_possible
+            );
+            sol.Solve();
+            String answer = sol.getSolution();
+            System.out.println("\nTHE RESULT FOR " + output_terms_names[i] + ":\n\n" + answer);
+            // editor_pane.setText(editor_pane.getText() + "\nTHE RESULT FOR " + output_terms_names[i] + ":\n\n" + answer);
+            editor_pane.setText(answer);
         }
     }
 
