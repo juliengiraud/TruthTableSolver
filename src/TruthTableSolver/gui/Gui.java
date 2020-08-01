@@ -63,7 +63,7 @@ public class Gui extends JFrame {
         terms_names = default_terms_names;
         number_of_terms = 2;
         sum_of_products_or_product_of_sums = 0;
-        one_sol_or_all_possible = 0;
+        one_sol_or_all_possible = 1;
 
         progress_bar = new JProgressBar();
         values = new Vector<Integer>(number_of_terms);
@@ -341,9 +341,9 @@ public class Gui extends JFrame {
 
         JRadioButton all_possible_sol = new JRadioButton(
                 "<html><font color=green>All possible solutions<br></br>(Occasionally slow)</font></html>");
-        all_possible_sol.setSelected(true);
 
         JRadioButton one_sol = new JRadioButton("<html><font color=green>One solution<br></br>(fast)</font></html>");
+        one_sol.setSelected(true);
         ButtonGroup buttonGroup2 = new ButtonGroup();
 
         buttonGroup2.add(all_possible_sol);
@@ -768,11 +768,13 @@ public class Gui extends JFrame {
     }
 
     public static void solveFile() throws Exception {
+        Gui.setProgressBar(true);
         fileContent = getFileContent();
         terms_names = getTermsNames();
         number_of_terms = terms_names.length;
         output_terms_names = getOutputTermsNames();
         fileValues = getFileValues();
+        String response = "<html><big>";
 
         for (int i = 0; i < fileValues.size(); i++) {
             Solver sol = new Solver(
@@ -783,10 +785,13 @@ public class Gui extends JFrame {
             );
             sol.Solve();
             String answer = sol.getSolution();
-            System.out.println("\nTHE RESULT FOR " + output_terms_names[i] + ":\n\n" + answer);
-            // editor_pane.setText(editor_pane.getText() + "\nTHE RESULT FOR " + output_terms_names[i] + ":\n\n" + answer);
-            editor_pane.setText(answer);
+            answer = answer.replaceAll("\\<.*?>", ""); // remove html tags
+            response += "<br>THE RESULT FOR " + output_terms_names[i] + ":<br>" + answer + "<br>";
         }
+        response += "</big></html>";
+        editor_pane.setText(response);
+        Gui.setStatusBar("Done");
+        Gui.setProgressBar(false);
     }
 
     public static void setAndClearValuesArray() {
